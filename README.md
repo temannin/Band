@@ -1,4 +1,4 @@
-<center><img src="https://i.imgur.com/Pu8z1QV.png"></center>
+<center><img src="https://i.imgur.com/NjA0svv.png"></center>
 
 # Band
 [![Build Status](https://travis-ci.org/temannin/Band.svg?branch=master)](https://travis-ci.org/temannin/Band)

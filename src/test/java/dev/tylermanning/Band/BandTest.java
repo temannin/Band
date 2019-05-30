@@ -59,7 +59,7 @@ public class BandTest {
 				double end = System.nanoTime();
 				time += (end-start)/1000000;
 				String result = String.format("%.5f", (end-start)/1000000);				
-				assertTrue(Double.parseDouble(result) < 5);
+				assertTrue(Double.parseDouble(result) < 20);
 			}
 			else {
 				band.search("firstname", string).getResults();
