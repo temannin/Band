@@ -1,7 +1,7 @@
 <center><img src="https://i.imgur.com/NjA0svv.png"></center>
 
 # Band
-[![Build Status](https://travis-ci.org/temannin/Band.svg?branch=master)](https://travis-ci.org/temannin/Band)
+[![Build Status](https://travis-ci.org/temannin/Band.svg?branch=master)](https://travis-ci.org/temannin/Band) ![Maintenance](https://img.shields.io/maintenance/yes/2019.svg)
 
 Easy to use, blazing fast JSON document store and retrieve with customizable indexing.
 
@@ -12,11 +12,11 @@ Band is able to take in a sizeable amount of JSON documents and index them for s
 ~~~~
 {
    "city":"Boulder",
-    "state":"Colorado",
-    "population":"20,000",
-    "founded": 1959
+   "state":"Colorado",
+   "population":"20,000",
+   "founded": 1959
 }
-    Stored in jsonDocument variable
+//  Stored in jsonDocument variable
 ~~~~
 
 We would do 
@@ -27,8 +27,6 @@ band.addToBand(jsonDocumentVar, new String[] {"city", "state"})
 
 band.search("city","Boulder"); // Returns new band with new subset of data
 band.search("state","Colorado"); // Returns new band with new subset of data
-
-
 ~~~~
 
 
