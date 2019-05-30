@@ -12,7 +12,6 @@ public class BandTest {
 
 	@Test(timeout = 500)
 	public void testSearchSpeed() {
-		long time = System.currentTimeMillis();
 		
 		Band band = new Band();		
 		JSONObject actual = new JSONObject();
@@ -22,7 +21,7 @@ public class BandTest {
 		band.addToBand(actual, new String[] {"firstname","lastname", "address"});
 		
 		actual = new JSONObject();
-		actual.put("firstname", "lebron");
+		actual.put("firstname", "kyrie");
 		actual.put("lastname", "james");
 		actual.put("address", "Something something lane2");
 		band.addToBand(actual, new String[] {"firstname","lastname", "address"});
@@ -45,13 +44,31 @@ public class BandTest {
 			test.put("tz", getRandomString());
 			band.addToBand(test, new String[] {"firstname","lastname", "address", "city","state","country","elevation","lat","lon", "tz"});
 
-			if ( i % 1000 == 0 ) {
+			if ( i % 10 == 0 ) {
 				names.add(firstname);
 			}
 		}
-		for (String string : names) {	
-			System.out.println(band.search("firstname", "kyrie"));			
+		int counter = 0;
+		double time = 0;
+		for (int i = 0; i < names.size(); i++) {
+			String string = names.get(i);
+			if (i > 5) {
+				counter++;
+				double start = System.nanoTime();
+				band.search("firstname", string).getResults();	
+				double end = System.nanoTime();
+				time += (end-start)/1000000;
+				String result = String.format("%.5f", (end-start)/1000000);				
+				assertTrue(Double.parseDouble(result) < 5);
+			}
+			else {
+				band.search("firstname", string).getResults();
+			}
+			
 		}
+		double average = time / counter;
+		System.out.println("Band searched " + String.valueOf(counter) + " times averaging " + String.format("%.5fms", average) + " per query.");
+		assertTrue(average < .06);
 
 		
 	}

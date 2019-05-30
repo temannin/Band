@@ -6,14 +6,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.commons.collections4.MapIterator;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Band {
+	
+	public Band() { }
 	
 	private HashMap<String, MultiValuedMap<String, JSONObject>> store = new HashMap<String, MultiValuedMap<String, JSONObject>>();
 	
@@ -32,16 +38,7 @@ public class Band {
 	}
 
 	public Band search(String property, String value) {
-		System.out.println("Searching " + property + "for " +  value);
-		double startTime = System.nanoTime();
-		Collection<JSONObject> temp = store.get(property).get(value);		
-		double endTime = System.nanoTime();
-
-		double duration = (endTime - startTime) / 1000000;  //divide by 1000000 to get milliseconds.
-		
-		NumberFormat formatter = new DecimalFormat("#.#######"); 
-		String f = formatter.format(duration); 
-		System.out.println("operation took " + f + " ms");
+		Collection<JSONObject> temp = store.get(property).get(value);
 		return Band.convertTo(temp);
 	}
 
@@ -59,5 +56,19 @@ public class Band {
 	@Override
 	public String toString() {
 		return "NOT IMPLEMENTED";
+	}
+
+	
+	public JSONArray getResults() {		
+		Entry<String, MultiValuedMap<String, JSONObject>> it = this.store.entrySet().iterator().next();
+		Collection<Collection<JSONObject>> map = it.getValue().asMap().values();
+		Iterator mapIter = map.iterator();
+		if (mapIter.hasNext()) {
+			return new JSONArray(mapIter.next().toString());
+		}
+		else {
+			return new JSONArray();
+		}
+		
 	}
 }
