@@ -16,15 +16,15 @@ public class BandTest {
 		
 		Band band = new Band();		
 		JSONObject actual = new JSONObject();
-		actual.put("firstname", "tyler");
-		actual.put("lastname", "manning");
-		actual.put("address", "7833 Village Dr.");
+		actual.put("firstname", "kyrie");
+		actual.put("lastname", "irving");
+		actual.put("address", "Something something lane");
 		band.addToBand(actual, new String[] {"firstname","lastname", "address"});
 		
 		actual = new JSONObject();
-		actual.put("firstname", "tyler");
-		actual.put("lastname", "manning");
-		actual.put("address", "2211 Hannaford Ave");
+		actual.put("firstname", "lebron");
+		actual.put("lastname", "james");
+		actual.put("address", "Something something lane2");
 		band.addToBand(actual, new String[] {"firstname","lastname", "address"});
 		
 		ArrayList<String> names = new ArrayList<String>();
@@ -44,17 +44,13 @@ public class BandTest {
 			test.put("lon", getRandomString());
 			test.put("tz", getRandomString());
 			band.addToBand(test, new String[] {"firstname","lastname", "address", "city","state","country","elevation","lat","lon", "tz"});
-//			System.out.println((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / Math.pow(2, 20));
+
 			if ( i % 1000 == 0 ) {
 				names.add(firstname);
 			}
 		}
-		
-		System.out.println(band.search("firstname", "tyler"));
 		for (String string : names) {	
-			time = System.nanoTime();
-			System.out.println(band.search("firstname", string));
-			assertTrue("Method completed in half a second", System.nanoTime() - time < 3500000);
+			System.out.println(band.search("firstname", string));			
 		}
 
 		
