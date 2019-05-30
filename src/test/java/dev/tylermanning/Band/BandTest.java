@@ -50,7 +50,7 @@ public class BandTest {
 			}
 		}
 		for (String string : names) {	
-			System.out.println(band.search("firstname", string));			
+			System.out.println(band.search("firstname", "kyrie"));			
 		}
 
 		

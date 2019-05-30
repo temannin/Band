@@ -58,18 +58,6 @@ public class Band {
 
 	@Override
 	public String toString() {
-		
-		int totalSize = 0;
-		String repr = "";
-		
-		Iterator it = this.store.entrySet().iterator();
-	    while (it.hasNext()) {
-	        Map.Entry pair = (Map.Entry)it.next();
-	        MultiValuedMap<String, JSONObject> temp = (MultiValuedMap<String, JSONObject>) pair.getValue();
-	        totalSize += temp.size();
-	        repr += temp;
-	    }
-	    return repr;
-//	    return String.valueOf(totalSize);
+		return "NOT IMPLEMENTED";
 	}
 }
