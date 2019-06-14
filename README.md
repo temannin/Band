@@ -5,7 +5,7 @@
 
 Easy to use, blazing fast JSON document store and retrieve with customizable indexing.
 
-Inspired by the popular solutions Apache Lucene and Elasticsearch, I wanted to create a fast, JSON document store that didn't require an external web service to be running so Band was born. 
+Inspired by the popular solutions Apache Lucene and Elasticsearch, I wanted to create a fast, JSON document store that didn't require an external web service to be running. 
 
 Band is able to take in a sizeable amount of JSON documents and index them for search later by criteria defined by the user. For example if were loading 10,000 JSON docs into Band that looked like this:
 
